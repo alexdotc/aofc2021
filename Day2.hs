@@ -2,6 +2,7 @@ module Day2 where
 
 type Horiz = Integer
 type Depth = Integer
+type Aim = Integer
 
 calculatePositions :: [(String, Integer)] -> ([Horiz],[Depth])
 calculatePositions l = ([goHoriz x | x <- l], [goDepth x | x <- l])
@@ -13,18 +14,21 @@ calculatePositions l = ([goHoriz x | x <- l], [goDepth x | x <- l])
           "down" -> n
           _      -> 0
 
-calculatePosition :: [(String, Integer)] -> (Horiz, Depth)
-calculatePosition movements = (sum(fst cp), sum(snd cp))
-  where cp = calculatePositions movements
+calculatePositionsWithAim :: [Horiz] -> [Depth] -> Aim -> Depth
+calculatePositionsWithAim [] _ _ = 0
+calculatePositionsWithAim (h:hs) (d:ds) aim = 
+    h*aim + calculatePositionsWithAim hs ds (aim+d)
 
 getMovements :: IO [(String, Integer)]
 getMovements = do
-  movements <- readFile "movements.txt"
+  movements <- readFile "d2.in"
   return $ (map f . lines $ movements)
     where f x = (head (words x), (read $ last $ words x) :: Integer)
   
 main :: IO ()
 main = do
   movements <- getMovements
-  let position = calculatePosition movements
-  print $ fst position * snd position
+  let positions = calculatePositions movements
+  print $ (sum $ fst positions) * (sum $ snd positions)
+  let positionsA = calculatePositionsWithAim (fst positions) (snd positions) 0
+  print $ (sum $ fst positions) * positionsA

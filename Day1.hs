@@ -13,7 +13,7 @@ n3Increases l =  if length l < 4 then 0 else go l
 
 getDistances :: IO [Integer]
 getDistances = do
-  distances <- readFile "distances.txt"
+  distances <- readFile "d1.in"
   return $ (map (\x -> read x :: Integer) . lines $ distances)
   
 main :: IO ()
