@@ -2,7 +2,7 @@ module Day3 where
 
 import Data.Word
 import Data.Bits
-import Data.List
+import Data.List (genericLength)
 
 type GammaRate = Word32
 type EpsilonRate = Word32
@@ -51,9 +51,10 @@ getData = do
 main :: IO ()
 main = do
   d <- getData
-  let gamma = getGamma d 11
-  let epsilon = gammaToEpsilon gamma 12
+  let nb = 11
+  let gamma = getGamma d n
+  let epsilon = gammaToEpsilon gamma (n+1)
   print $ gamma * epsilon
-  let o2 = getLSRating d 11 mostCommonBitAtPos
-  let co2 = getLSRating d 11 leastCommonBitAtPos
+  let o2 = getLSRating d n mostCommonBitAtPos
+  let co2 = getLSRating d n leastCommonBitAtPos
   print $ o2 * co2
