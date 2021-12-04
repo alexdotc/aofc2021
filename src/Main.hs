@@ -2,7 +2,7 @@ module Main where
 
 getData :: IO [String]
 getData = do
-  d <- readFile "data/d5.in"
+  d <- readFile "data/d05.in"
   return $ (lines d)
   
 main :: IO ()

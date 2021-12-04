@@ -1,4 +1,4 @@
-module Day4 where
+module Day04 where
 
 import ALC (strings, splitEvery)
 import Data.List (intercalate, transpose)
@@ -48,7 +48,7 @@ sumUnmarked (b:bs) = case b of
 
 getData :: IO [String]
 getData = do
-  d <- readFile "data/d4.in"
+  d <- readFile "data/d04.in"
   return $ (lines d)
   
 main :: IO ()

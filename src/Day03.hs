@@ -1,4 +1,4 @@
-module Day3 where
+module Day03 where
 
 import Data.Word
 import Data.Bits
@@ -45,7 +45,7 @@ getLSRating xs n bc = if length xs == 1 then head xs else
 
 getData :: IO [Word32]
 getData = do
-  d <- readFile "d3.in"
+  d <- readFile "data/d03.in"
   return $ (map strToWord32 . lines $ d)
   
 main :: IO ()

@@ -1,4 +1,4 @@
-module Day2 where
+module Day02 where
 
 type Horiz = Integer
 type Depth = Integer
@@ -21,7 +21,7 @@ calculatePositionsWithAim (h:hs) (d:ds) aim =
 
 getMovements :: IO [(String, Integer)]
 getMovements = do
-  movements <- readFile "d2.in"
+  movements <- readFile "data/d02.in"
   return $ (map f . lines $ movements)
     where f x = (head (words x), (read $ last $ words x) :: Integer)
   

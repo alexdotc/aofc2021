@@ -1,4 +1,4 @@
-module Day1 where
+module Day01 where
 
 nIncreases :: [Integer] -> Integer
 nIncreases [] = 0
@@ -13,7 +13,7 @@ n3Increases l =  if length l < 4 then 0 else go l
 
 getDistances :: IO [Integer]
 getDistances = do
-  distances <- readFile "d1.in"
+  distances <- readFile "data/d01.in"
   return $ (map (\x -> read x :: Integer) . lines $ distances)
   
 main :: IO ()
